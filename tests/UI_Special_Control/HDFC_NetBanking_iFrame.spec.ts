@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('test - Frame', async ({ page }) => {
+test('@smoketest - Frame', async ({ page }) => {
   await page.goto('https://netbanking.hdfcbank.com/netbanking/');
   const loginFrame = await page.frame({ name: 'login_page' });
   if (loginFrame) {
