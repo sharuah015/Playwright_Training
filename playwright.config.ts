@@ -1,3 +1,9 @@
+import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+dotenv.config({ path: path.resolve(__dirname, '.env1') });
 import { defineConfig, devices } from '@playwright/test';
 
 /**
@@ -12,8 +18,8 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  // testDir: './tests',
-  testDir: './tests/',
+    testDir: './tests/ZeroBank_Test_PageObject/',
+  //testDir: './tests/',
   /* Run tests in files in parallel */
   fullyParallel: true,
   workers:1,
