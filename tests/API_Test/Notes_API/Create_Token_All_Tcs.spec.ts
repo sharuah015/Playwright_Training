@@ -1,5 +1,15 @@
 import { test, expect } from '@playwright/test';
-import testData from '../TestData_API/CreateToken.json';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// __dirname replacement for ESM
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Load JSON in a way that's compatible with ESM (avoid import assertions issues)
+const jsonPath = path.resolve(__dirname, '../TestData_API/CreateToken.json');
+const testData = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
  
 for (const testCase of testData.testCases) {
     test(`Login API Test - ${testCase.TestCase_ID}`, async ({ request }) => {
